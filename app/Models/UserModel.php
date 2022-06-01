@@ -20,8 +20,6 @@ class UserModel extends Model
             'last_name'      => $request->getParam('last_name'),
             'email'    => $request->getParam('email')
         ]);
-        var_dump($user);
-        die;
 
         return $user;
     }

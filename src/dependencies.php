@@ -23,6 +23,9 @@ return function (App $app) {
         return $view;
     };
 
+    // validator
+    $container['validator'] = function ($container) { return new Awurth\SlimValidation\Validator; };
+
     // monolog
     $container['logger'] = function ($c) {
         $settings = $c->get('settings')['logger'];

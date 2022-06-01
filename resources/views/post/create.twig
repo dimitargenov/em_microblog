@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="UTF-8">
+{% include 'common/head.twig' %}
+<body>
+    <div class="flex-center position-ref full-height">
+        <div class="content">
+            <div class="title m-b-md">
+                {{ appName }} - {{ pageName }}
+            </div>
+
+            {% include 'common/breadcrump.twig' %}
+            <div class="row">
+                <form action="/posts/create" method="post">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description" name="description" placeholder="Enter description">
+                        </textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="userId">User</label>
+                        <select id="userId" name="userId" class="form-control">
+                            {% for user in users %}
+                                <option value="{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="file">File</label>
+                        <input type="file" class="form-control-file" id="file" name="file">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% include 'common/bootstrap_footer.twig' %}
+</body>
+</html>

@@ -8,8 +8,7 @@ try {
 
 $loggedInMiddleware = function ($request, $response, $next) {
     $route = $request->getAttribute('route');
-//    var_dump($route);
-//    die;
+
     $routeName = $route->getName();
     $groups = $route->getGroups();
     $methods = $route->getMethods();

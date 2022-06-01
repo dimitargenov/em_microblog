@@ -2,7 +2,7 @@
 
 return [
     'settings' => [
-        'displayErrorDetails' => true, // set to false in production
+        'displayErrorDetails' => getenv('APP_DEBUG') === 'true',
         'addContentLengthHeader' => false, // Allow the web server to send the content-length header
 
         // Renderer settings
@@ -10,7 +10,7 @@ return [
             'template_path' => __DIR__ . '/../templates/',
         ],
 
-        // Monolog settings
+        // Log settings
         'logger' => [
             'name' => 'slim-app',
             'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
@@ -25,13 +25,6 @@ return [
             'name' => getenv('APP_NAME')
         ],
 
-        'database' => [
-            'host' => 'localhost',
-            'dbname' => 'em_microblog',
-            'user' => 'root',
-            'pass' => '048780162dD?'
-        ],
-
         'db' => [
             'driver'    => 'mysql',
             'host'      => 'localhost',
@@ -41,6 +34,10 @@ return [
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
+        ],
+
+        "jwt" => [
+            'secret' => getenv('JWT_SECRET')
         ]
     ],
 ];
